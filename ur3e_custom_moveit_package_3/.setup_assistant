@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ""
+    relative_path: /home/nova/catkin_ws/src/ur3e-kshitij/my_ur/urdf/model1.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/my_ur3e.srdf
+  CONFIG:
+    author_name: ks
+    author_email: ks@ks.com
+    generated_timestamp: 1690933799

@@ -1,0 +1,5 @@
+check urdf rpy and xyz tag attributes are swapped in some places
+
+install planners to remove pilz and chomp errors
+
+RUN: sudo apt-get install ros-kinetic-ros-control ros-kinetic-joint-state-controller ros-kinetic-effort-controllers ros-kinetic-position-controllers ros-kinetic-velocity-controllers ros-kinetic-ros-controllers ros-kinetic-gazebo-ros ros-kinetic-gazebo-ros-control

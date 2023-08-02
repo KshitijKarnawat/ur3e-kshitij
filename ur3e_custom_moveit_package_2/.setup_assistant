@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ""
+    relative_path: /home/kshitij/catkin_ws/src/my_ur/urdf/model1.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/my_ur3e.srdf
+  CONFIG:
+    author_name: kshitij
+    author_email: kshitij@umd.edu
+    generated_timestamp: 1690819124
