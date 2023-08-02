@@ -125,7 +125,7 @@
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-                <box size="1.0 1.0 1.0" />
+                <box size="1 1 1" />
             </geometry>
         </visual>
         <collision>
@@ -139,6 +139,63 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <inertia ixx="200.0" ixy="200.0" ixz="200.0" iyy="200.0" iyz="200.0" izz="200.0" />
         </inertial>
+    </link>
+    <link name="wall_right">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <mass value="200.0" />
+            <inertia ixx="200.0" ixy="200.0" ixz="200.0" iyy="200.0" iyz="200.0" izz="200.0" />
+        </inertial>
+        <!-- <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <box size="1 0.1 1" />
+            </geometry>
+        </visual> -->
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <box size="1 0.1 1" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="wall_front">
+        <inertial>
+            <origin xyz="0.0 0. 0.0" rpy="0.0 0.0 0.0" />
+            <mass value="200.0" />
+            <inertia ixx="200.0" ixy="200.0" ixz="200.0" iyy="200.0" iyz="200.0" izz="200.0" />
+        </inertial>
+        <!-- <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <box size="0.1 1 1" />
+            </geometry>
+        </visual> -->
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <box size="0.1 1 1" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="wall_left">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <mass value="200.0" />
+            <inertia ixx="200.0" ixy="200.0" ixz="200.0" iyy="200.0" iyz="200.0" izz="200.0" />
+        </inertial>
+        <!-- <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <box size="1 0.1 1" />
+            </geometry>
+        </visual> -->
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <box size="1 0.1 1" />
+            </geometry>
+        </collision>
     </link>
     <!-- links: main serial chain -->
     <link name="base_link" />
@@ -297,16 +354,32 @@
             <inertia ixx="0.00013626661215999998" ixy="0.0" ixz="0.0" iyy="0.00013626661215999998" iyz="0.0" izz="0.0001792" />
         </inertial>
     </link>
-
     <gazebo reference="blob">
         <material>Gazebo/Orange</material>
+        <plugin name="gazebo_ros_control">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
     </gazebo>
     <!-- blob joint -->
-
     <joint name="world-blob" type="fixed">
         <parent link="world" />
         <child link="blob" />
         <origin xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0" />
+    </joint>
+    <joint name="blob-wall_right" type="fixed">
+        <origin xyz="0.0 -0.5 1" rpy="0.0 0.0 0.0" />
+        <parent link="blob" />
+        <child link="wall_right" />
+    </joint>
+    <joint name="blob-wall_front" type="fixed">
+        <parent link="blob" />
+        <child link="wall_front" />
+        <origin xyz="-0.50 0.0 1.0" rpy="0.0 0.0 0.0" />
+    </joint>
+    <joint name="blob-wall_left" type="fixed">
+        <parent link="blob" />
+        <child link="wall_left" />
+        <origin xyz="0.0 0.50 1." rpy="0.0 0.0 0.0" />
     </joint>
     <joint name="blob-base_link" type="fixed">
         <parent link="blob" />
@@ -399,8 +472,8 @@
         <parent link="flange" />
         <child link="tool0" />
     </joint>
-
     <gazebo>
         <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control" />
     </gazebo>
 </robot>
+
